@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mitchell's Portfolio</title>
+<meta name="description" content="Mitchell's portfolio: photography, projection mapping, software, building projects, graphic design and drawings.">
+<style>:root{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sketchbook page by day, a dark wall with projected colour by night. Graphite paper sections bracket one dark "projection" band. */
+:root{
+  --paper:#E9E9E4; --paper-2:#DEDED8; --graphite:#1E1F22; --lead:#5E6064; --rule:#C6C6BF;
+  --night:#121214; --night-fg:#ECEBE6; --night-muted:#9A9AA0;
+  --magenta:#D9358F; --cyan:#38C6D6; --lime:#B6E04A; --amber:#F2A33A;
+  --link:#A8236E;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#18191B; --paper-2:#212226; --graphite:#E7E6E1; --lead:#A3A4A8; --rule:#34353A;
+  --night:#0B0B0C; --link:#F07ABB; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#18191B; --paper-2:#212226; --graphite:#E7E6E1; --lead:#A3A4A8; --rule:#34353A;
+  --night:#0B0B0C; --link:#F07ABB; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--graphite);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;line-height:.92;letter-spacing:.005em;text-wrap:balance;margin:0;text-transform:uppercase}
+.label{font:500 12px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lead)}
+p{margin:0;max-width:62ch}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(32px,5vw,56px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(56px,7vw,116px)}
+.hero h1 .thin{font-weight:500;display:block;font-size:.42em;letter-spacing:.02em;color:var(--lead);margin-top:.35em}
+.intro{display:grid;gap:18px;margin-top:22px;font-size:18px}
+.pitch{font-size:clamp(22px,2.4vw,30px);line-height:1.3;font-weight:500;text-wrap:pretty;max-width:30ch}
+.facts{display:grid;margin-top:10px;border-bottom:1px solid var(--rule);max-width:580px}
+.facts span{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--rule);font:500 13px/1.5 var(--f-mono);color:var(--graphite)}
+.facts span b{color:var(--lead);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:11px;padding-top:2px}
+.hero-fig{margin:0;position:relative}
+.hero-fig img{width:100%;display:block;object-fit:cover;aspect-ratio:16/9;object-position:30% 50%;border-radius:2px;box-shadow:0 24px 50px -28px rgba(0,0,0,.45)}
+.hero-fig figcaption{margin-top:10px}
+
+/* section heads */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px 24px;margin-bottom:clamp(24px,3vw,36px)}
+.sec-head h2{font-size:clamp(40px,6vw,72px)}
+.sec-head .label{padding-bottom:6px}
+.strip-nav .btn{min-width:44px;padding:10px 0;text-align:center}
+.pair{align-items:start}
+.build .cap span{display:none}
+.build .tile .cap{padding-top:10px}
+
+.night .sec-head h2{font-size:clamp(48px,8vw,104px)}
+.night .sec-head{margin-bottom:0}
+.night .reel{margin-top:clamp(24px,3vw,36px)}
+/* drawings */
+.drawings{padding-block:clamp(48px,7vw,88px);background:var(--paper-2)}
+.gallery{columns:4 240px;column-gap:14px}
+.tile{break-inside:avoid;margin:0 0 14px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;text-align:left;color:inherit}
+.tile img{width:100%;display:block;border-radius:2px;transition:transform .35s ease,filter .35s ease;filter:grayscale(.15)}
+.tile:hover img{transform:translateY(-3px);filter:none}
+.tile .cap{display:flex;justify-content:space-between;gap:10px;padding:8px 2px 0}
+.tile .cap b{font-weight:600;font-size:14px}
+.tile .cap span{font:12px/1.4 var(--f-mono);color:var(--lead);white-space:nowrap}
+
+/* projection night band */
+.night{background:var(--night);color:var(--night-fg);padding-block:clamp(56px,8vw,104px);position:relative;overflow:hidden}
+.night::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 0 58%,rgba(217,53,143,.10) 58% 66%,transparent 66%),
+             linear-gradient(115deg,transparent 0 70%,rgba(56,198,214,.08) 70% 76%,transparent 76%),
+             linear-gradient(115deg,transparent 0 80%,rgba(182,224,74,.07) 80% 84%,transparent 84%)}
+.night .label{color:var(--night-muted)}
+.night h2{font-size:clamp(48px,8vw,104px)}
+.night h2 em{font-style:normal;background:linear-gradient(90deg,var(--magenta),var(--amber) 40%,var(--lime) 70%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.reel{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:36px;align-items:start;position:relative}
+.vid{margin:0;display:grid;gap:8px;min-width:0}
+.vid video{width:100%;display:block;background:#000;border-radius:2px}
+.vid-wide video{aspect-ratio:16/9}
+.vid-tall video{aspect-ratio:9/16;max-height:640px;object-fit:cover}
+.stills{display:grid;gap:14px;align-content:start;min-width:0}
+.stills .tile,.app-shot{margin:0}
+.app-shot{margin:0}
+@media (max-width:700px){.reel{grid-template-columns:1fr}.vid-tall{max-width:360px}}
+.proj-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:36px;position:relative}
+.proj-grid .tile .cap span{color:var(--night-muted)}
+.proj-text{display:grid;gap:18px;align-content:start;min-width:0}
+.proj-text p{color:#D6D5D0}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:4px 0 0;font:13px/1.5 var(--f-mono)}
+.spec dt{color:var(--night-muted)}
+.spec dd{margin:0}
+.swatch{display:flex;gap:6px;margin-top:4px}
+.swatch i{width:28px;height:6px;display:block}
+
+/* code + sound */
+.make{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.make-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.make-item{display:grid;gap:12px;align-content:start;padding-top:16px;border-top:2px solid var(--graphite);min-width:0}
+.make-item h3{font-size:34px}
+.make-item .label{margin-bottom:-4px}
+.links{display:grid;gap:6px;margin-top:4px;padding:0;list-style:none;font:14px/1.5 var(--f-mono)}
+
+/* contact */
+.contact{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--rule)}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+.contact h2{font-size:clamp(44px,7vw,88px)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}
+.mail code{font:500 17px/1.4 var(--f-mono);user-select:all;word-break:break-all}
+.btn{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border:1.5px solid var(--graphite);background:transparent;color:var(--graphite);cursor:pointer;border-radius:2px}
+.btn:hover{background:var(--graphite);color:var(--paper)}
+footer{padding-block:24px 40px}
+
+/* lightbox */
+.lb[hidden]{display:none!important}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,10,12,.94);display:grid;grid-template-rows:1fr auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;margin:auto;object-fit:contain;min-height:0;align-self:center;justify-self:center}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#ECEBE6;padding-top:12px;font:13px/1.4 var(--f-mono)}
+.lb-bar .btn{color:#ECEBE6;border-color:#ECEBE6}
+.lb-bar .btn:hover{background:#ECEBE6;color:#121214}
+.lb-nav{display:flex;gap:8px}
+
+/* graphic design */
+.graphic{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.gd-lede{font-size:17px;margin:-12px 0 28px}
+.gd-grid{display:flex;gap:clamp(8px,1.6vw,18px);align-items:flex-start}
+.gd-grid .tile{margin:0;min-width:0}
+.gd-grid .tile img{filter:none;box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+.gd-grid .tile:nth-child(1){flex:0.744}
+.gd-grid .tile:nth-child(2){flex:0.922}
+.gd-grid .tile:nth-child(3){flex:0.759}
+@media (max-width:520px){.gd-grid .cap span{display:none}.gd-grid .cap b{font-size:12px}}
+
+/* photography filmstrip */
+.photo{padding-block:clamp(48px,7vw,88px) clamp(40px,6vw,72px);border-top:1px solid var(--rule)}
+.strip-nav{display:flex;align-items:center;gap:8px}
+.strip-nav .label{margin-right:6px}
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:max(16px,calc((100vw - 1180px)/2 + 16px));padding-left:max(16px,calc((100vw - 1180px)/2 + 16px),env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:14px;scrollbar-width:thin}
+.strip:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.frame{flex:0 0 auto;height:clamp(280px,46vh,440px);width:auto;margin:0;scroll-snap-align:start}
+#strip .cap,.dstrip .cap,.gd-grid .cap{display:none!important}
+.strip.dstrip .tile.frame{display:flex;flex-direction:column;height:auto}
+.strip.dstrip .tile.frame img{height:clamp(280px,46vh,440px);width:auto;aspect-ratio:3/4;object-fit:cover;max-width:none}
+.dstrip .cap{width:0;min-width:100%}
+.strip .tile.frame img{height:100%;width:auto;max-width:none;filter:none}
+.frame-vid video{height:100%;width:auto;display:block;aspect-ratio:9/16;object-fit:cover;background:#000;border-radius:2px}
+
+
+/* circle5 */
+.c5{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(20px,3vw,32px);background:var(--paper-2);border:1px solid var(--rule)}
+.c5-wheel{width:100%;max-width:220px;height:auto}
+.c5-wheel .ring{fill:none;stroke:var(--graphite);stroke-width:1.5}
+.c5-wheel .ring2{fill:none;stroke:var(--rule);stroke-width:1;stroke-dasharray:3 4}
+.c5-wheel .prog{fill:none;stroke:var(--link);stroke-width:2.5;stroke-linejoin:round}
+.c5-wheel .dots circle{fill:var(--link)}
+.c5-wheel .keys text{font:500 12px var(--f-mono);fill:var(--graphite);text-anchor:middle;dominant-baseline:central}
+.c5-text{display:grid;gap:12px;justify-items:start;min-width:0}
+.c5-text h3{font-size:clamp(40px,5vw,60px)}
+.c5-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.c5-tags li{font:12px/1 var(--f-mono);padding:6px 9px;border:1px solid var(--rule);color:var(--lead)}
+.c5-go{text-decoration:none;padding:12px 16px;margin-top:4px;background:var(--graphite);color:var(--paper)}
+.c5-go:hover{background:var(--link);border-color:var(--link);color:#fff}
+@media (max-width:640px){.c5{grid-template-columns:1fr}.c5-wheel{max-width:180px}}
+
+/* art grid */
+.art{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.art-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.art-grid .tile{margin:0}
+.art-grid .tile img{aspect-ratio:3/4;object-fit:cover;filter:none}
+.art-grid .cap{display:none!important}
+@media (max-width:760px){.art-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* software */
+.light-line{margin-top:20px;color:#D6D5D0;font-size:17px;max-width:60ch}
+.software{padding-block:clamp(48px,7vw,88px)}
+.sw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);align-items:stretch}
+.sw-card{display:grid;grid-template-rows:auto 1fr;background:var(--paper-2);border:1px solid var(--rule);min-width:0}
+.sw-visual{aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--rule)}
+.sw-shot{background:#1e1e20}
+.sw-shot .tile{margin:0;width:100%;height:100%}
+.sw-shot .tile img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:none}
+.sw-shot .cap{display:none!important}
+.sw-wheel .c5-wheel{width:58%;max-width:240px}
+.sw-body{display:grid;gap:12px;align-content:start;justify-items:start;padding:clamp(18px,2.4vw,28px)}
+.sw-body h3{font-size:clamp(32px,3.6vw,48px)}
+.sw-body p{font-size:15.5px}
+.sw-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.sw-tags li{font:12px/1 var(--f-mono);padding:6px 9px;border:1px solid var(--rule);color:var(--lead)}
+.sw-go{text-decoration:none;padding:12px 16px;margin-top:4px;background:var(--graphite);color:var(--paper)}
+.sw-go:hover{background:var(--link);border-color:var(--link);color:#fff}
+@media (max-width:760px){.sw-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* building */
+.build{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.build-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
+.build-proj{display:grid;gap:12px;align-content:start;min-width:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair .tile{margin:0}
+.pair .tile img{aspect-ratio:3/4;object-fit:cover}
+.shower{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:2px solid var(--graphite);display:grid;gap:16px}
+.shower-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.shower-head h3{font-size:clamp(34px,5vw,56px);margin-top:6px}
+.shower-intro{display:grid;grid-template-columns:1fr 260px;gap:24px;align-items:start}
+.shower-text{display:grid;gap:14px;min-width:0}
+.shower-photo{width:100%;margin:0}
+@media (max-width:620px){.shower-intro{grid-template-columns:1fr}}
+.shower-photo img{aspect-ratio:4/3;object-fit:cover}
+.shower-lede{font-size:17px}
+.sh-specs{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;list-style:none;font:13px/1.5 var(--f-mono);color:var(--lead)}
+.sh-specs b{color:var(--graphite);font-weight:500}
+.sh-viewer{display:grid;gap:12px}
+.sh-stage{position:relative;background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;overflow:hidden;min-width:0}
+#sh-wrap canvas{display:block;width:100%;height:min(66vh,560px);touch-action:none;cursor:grab}
+#sh-wrap canvas:active{cursor:grabbing}
+.sh-chip{position:absolute;top:12px;left:12px;font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;background:var(--graphite);color:var(--paper);border-radius:2px;pointer-events:none}
+.sh-zoom{position:absolute;top:10px;right:10px;display:flex;gap:6px}
+.sh-ic{background:var(--paper);min-width:40px}
+.sh-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;background:var(--graphite);color:var(--paper);border-radius:999px;font:600 15px/1 var(--f-body);white-space:nowrap;pointer-events:none;transition:opacity .5s ease,transform .5s ease;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+.sh-hint svg{animation:sh-rock 2.4s ease-in-out infinite}
+.sh-hint.gone{opacity:0;transform:translate(-50%,10px)}
+@keyframes sh-rock{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(25deg)}}
+.sh-bar{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}
+.sh-now{display:grid;gap:4px;text-align:center;min-width:0}
+.sh-now .label{color:var(--link)}
+.sh-now b{font:600 19px/1.25 var(--f-body);text-wrap:balance}
+.sh-step{padding:12px 16px;font-size:13px}
+.sh-play{padding:12px 16px;font-size:13px;background:var(--graphite);color:var(--paper)}
+.sh-play:hover{background:var(--link);border-color:var(--link);color:#fff}
+#sh-st{width:100%;accent-color:var(--link);height:28px}
+.sh-ends{display:flex;justify-content:space-between;margin-top:-8px}
+@media (max-width:640px){.sh-bar{grid-template-columns:1fr 1fr}.sh-now{grid-column:1/-1;order:-1}.sh-play{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.sh-hint svg{animation:none}}
+@media (max-width:900px){.build-grid{grid-template-columns:minmax(0,1fr)}}
+.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:520px){.tile .cap{flex-wrap:wrap}.tile .cap span{white-space:normal}}
+
+@media (max-width:900px){
+  .hero-grid,.proj-grid,.contact-grid{grid-template-columns:1fr}
+  .make-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label">Portfolio</div>
+      <h1>Mitchell</h1>
+      <div class="intro">
+        <p class="pitch">I build with my hands and with code, and I'd love to do both in the mountains.</p>
+        <div class="facts">
+          <span><b>Skills</b> Carpentry · Projection mapping · Design · Photography · Web &amp; code · Music</span>
+          <span><b>Language</b> English (fluent)</span>
+          <span><b>From</b> Portland, Oregon, US</span>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <img src="img/me_wide.jpg" alt="Mitchell smiling on a hilltop lookout above a river city with a bridge">
+    </figure>
+  </div>
+</header>
+
+<section class="photo" id="photo" aria-labelledby="photo-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="photo-h">Photography</h2>
+      <div class="strip-nav">
+        <span class="label">16 photos · 1 video</span>
+        <button class="btn" data-strip="strip" data-dir="-1" type="button" aria-label="Scroll photos left">←</button>
+        <button class="btn" data-strip="strip" data-dir="1" type="button" aria-label="Scroll photos right">→</button>
+      </div>
+    </div>
+  </div>
+  <div class="strip" id="strip" tabindex="0" aria-label="Photo album, scrolls sideways">
+      <button class="tile frame" data-full="img/ph_sunset.jpg"><img loading="lazy" src="img/t_ph_sunset.jpg" alt="Friends watching the sunset over a bay and mountains while a dog rolls on its back on the stone wall in front"><div class="cap" hidden><b>Sunset with friends</b></div></button>
+      <div class="frame frame-vid"><video src="img/harbour.mp4" poster="img/poster_harbour.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video: sunset over a small harbour, a moored boat rocking on golden water"></video></div>
+      <button class="tile frame" data-full="img/ph_IMG_1965.jpg"><img loading="lazy" src="img/t_ph_IMG_1965.jpg" alt="Jagged snow-covered alpine peak between clouds"><div class="cap" hidden><b>Alpine peak</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_3506.jpg"><img loading="lazy" src="img/t_ph_IMG_3506.jpg" alt="A cyclist on a gravel road below a ridge where cows are grazing"><div class="cap" hidden><b>Cyclist and cows</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_4124.jpg"><img loading="lazy" src="img/t_ph_IMG_4124.jpg" alt="A gull standing on top of a red channel marker over grey water"><div class="cap" hidden><b>Gull on a marker</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_3267.jpg"><img loading="lazy" src="img/t_ph_IMG_3267.jpg" alt="A girl steering a small inflatable boat across calm water at dusk"><div class="cap" hidden><b>Dinghy at dusk</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_2563.jpg"><img loading="lazy" src="img/t_ph_IMG_2563.jpg" alt="Weathered blue doors and a window with an orange keyhole sign on a yellow wall"><div class="cap" hidden><b>Yellow wall</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_2388.jpg"><img loading="lazy" src="img/t_ph_IMG_2388.jpg" alt="Black silhouette of a person carrying swim fins against a pale grey bay with a sailboat"><div class="cap" hidden><b>Silhouette with fins</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_3608.jpg"><img loading="lazy" src="img/t_ph_IMG_3608.jpg" alt="Sun setting behind a dark hill with a single sailboat on the water"><div class="cap" hidden><b>Sail at sunset</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_2664.jpg"><img loading="lazy" src="img/t_ph_IMG_2664.jpg" alt="A woman looking out of a window with wooden shutters in an old stone wall"><div class="cap" hidden><b>Stone window</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_3216c.jpg"><img loading="lazy" src="img/t_ph_IMG_3216c.jpg" alt="A woman stepping through a window opening in a ruined, ivy-covered wall painted with a large flower"><div class="cap" hidden><b>Through the ruin</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_2654.jpg"><img loading="lazy" src="img/t_ph_IMG_2654.jpg" alt="A group of hikers chatting at a viewpoint in front of a steep mountain range"><div class="cap" hidden><b>Hikers at the viewpoint</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_4254.jpg"><img loading="lazy" src="img/t_ph_IMG_4254.jpg" alt="A shared dinner table seen through a round porthole window, people passing plates"><div class="cap" hidden><b>Dinner through the porthole</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_1632_2.jpg"><img loading="lazy" src="img/t_ph_IMG_1632_2.jpg" alt="Friends stretching their arms to the sky on a boat deck"><div class="cap" hidden><b>Deck stretch</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_1759.jpg"><img loading="lazy" src="img/t_ph_IMG_1759.jpg" alt="Terraced green vineyard rows on a steep hillside with a small pink car"><div class="cap" hidden><b>Vineyard terraces</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_2642.jpg"><img loading="lazy" src="img/t_ph_IMG_2642.jpg" alt="A rooster and a black and white cat in front of a group of pigs"><div class="cap" hidden><b>Farmyard</b></div></button>
+      <button class="tile frame" data-full="img/ph_IMG_3449.jpg"><img loading="lazy" src="img/t_ph_IMG_3449.jpg" alt="Two dogs on a golden grassy hilltop under big white clouds"><div class="cap" hidden><b>Dogs on the hill</b></div></button>
+  </div>
+</section>
+
+<section class="night" id="light" aria-labelledby="light-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="light-h">Painting with <em>light</em></h2>
+      <span class="label">Projection mapping · 1 video</span>
+    </div>
+    <div class="reel">
+      <figure class="vid vid-wide">
+        <video src="img/proj_4263.mp4" poster="img/poster_4263.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Video: a classical fresco and shifting colour fields projected across the walls and arches of a room"></video>
+        <figcaption class="label">Fresco and colour fields mapped to a room's arches · video</figcaption>
+      </figure>
+    </div>
+    <p class="light-line">Projection mapping with my own software: colour, pattern and imagery fitted to the architecture of a room, run live on a projector.</p>
+  </div>
+</section>
+
+<section class="software" id="software" aria-labelledby="sw-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="sw-h">Software</h2>
+      <span class="label">2 apps</span>
+    </div>
+    <div class="sw-grid">
+      <article class="sw-card">
+        <div class="sw-visual sw-shot"><button class="tile app-shot" data-full="img/software_ui.jpg"><img loading="lazy" src="img/t_software_ui.jpg" alt="Screenshot of the projection-mapping app: a warp surface with corner handles over a test grid, with panels for surfaces, sources, mesh, mask, output display and audio"><div class="cap"><b>The app: warping a surface to a test grid</b><span>screenshot</span></div></button></div>
+        <div class="sw-body">
+          <div class="label">Desktop app · built with Claude</div>
+          <h3>Projection mapper</h3>
+          <p>The app behind the projection work above. Its auto space-mapping algorithm maps a whole room's surfaces in about 30 seconds instead of fitting each one by hand, and the visuals react live to audio. Mesh warps, masks and blend modes are there for fine-tuning by hand.</p>
+          <ul class="sw-tags"><li>Auto mapping in 30 s</li><li>Audio-reactive visuals</li><li>Mesh warp</li><li>Masks &amp; blend modes</li></ul>
+        </div>
+      </article>
+      <article class="sw-card">
+        <div class="sw-visual sw-wheel"><svg class="c5-wheel" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" class="ring"/><circle cx="100" cy="100" r="50" class="ring2"/><path d="M100.0,50.0 L125.0,56.7 L150.0,100.0 L75.0,56.7" class="prog"/><g class="dots"><circle cx="100.0" cy="50.0" r="5"/><circle cx="125.0" cy="56.7" r="5"/><circle cx="150.0" cy="100.0" r="5"/><circle cx="75.0" cy="56.7" r="5"/></g><g class="keys"><text x="100.0" y="26.0">C</text><text x="137.0" y="35.9">G</text><text x="164.1" y="63.0">D</text><text x="174.0" y="100.0">A</text><text x="164.1" y="137.0">E</text><text x="137.0" y="164.1">B</text><text x="100.0" y="174.0">F♯</text><text x="63.0" y="164.1">D♭</text><text x="35.9" y="137.0">A♭</text><text x="26.0" y="100.0">E♭</text><text x="35.9" y="63.0">B♭</text><text x="63.0" y="35.9">F</text></g></svg></div>
+        <div class="sw-body">
+          <div class="label">Music composition tool · web app</div>
+          <h3>Circle5</h3>
+          <p>A chord-progression builder for composing. Build progressions of up to 16 chords on a circle of fifths, Tonnetz or chromatic clock, add colour and bass notes, then export MIDI straight into Ableton.</p>
+          <ul class="sw-tags"><li>Circle of fifths</li><li>Tonnetz</li><li>Chromatic clock</li><li>MIDI export</li></ul>
+          <a class="btn sw-go" href="https://meesch-maker.github.io/Circle5/" target="_blank" rel="noopener">Open Circle5 ↗</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="build" id="build" aria-labelledby="build-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="build-h">Building</h2>
+      <span class="label">3 projects</span>
+    </div>
+
+    <div class="build-grid">
+      <div class="build-proj">
+        <div class="label">Project · salvaged-glass sliding door</div>
+        <div class="pair">
+          <button class="tile" data-full="img/IMG_4310.jpg"><img loading="lazy" src="img/t_IMG_4310.jpg" alt="Tall timber-framed sliding glass door made from mismatched salvaged glass panes, standing in a room with a round wheel window behind"><div class="cap"><b>Sliding glass door</b><span>timber + salvaged glass</span></div></button>
+          <button class="tile" data-full="img/window_model.jpg"><img loading="lazy" src="img/t_window_model.jpg" alt="3D model of the same sliding door frame with each glass pane numbered 2 to 9"><div class="cap"><b>The 3D plan</b><span>panes numbered</span></div></button>
+        </div>
+        <p>A full-height sliding glass door framed around reclaimed glass panes of different sizes. I modelled it in 3D first and numbered every pane, so each piece of glass had a planned slot before any cutting.</p>
+      </div>
+
+      <div class="build-proj">
+        <div class="label">Project · garden studio</div>
+        <div class="pair">
+          <button class="tile" data-full="img/IMG_0139.jpg"><img loading="lazy" src="img/t_IMG_0139.jpg" alt="Timber stud framing and mono-pitch rafters of a small building on a raised floor deck"><div class="cap"><b>Framing</b><span>studs + rafters</span></div></button>
+          <button class="tile" data-full="img/IMG_0462.jpg"><img loading="lazy" src="img/t_IMG_0462.jpg" alt="The same small building sheathed in plywood panels with battens and horizontal boards up to the roofline"><div class="cap"><b>Sheathed</b><span>ply + battens</span></div></button>
+        </div>
+        <p>A small studio built from the ground up: raised floor on blocks, stud walls, mono-pitch roof, then plywood sheathing with battens.</p>
+      </div>
+    </div>
+
+    <div class="shower">
+      <div class="shower-head">
+        <div>
+          <div class="label">Project · raised shower bathroom</div>
+          <h3>Bathroom build, step by step</h3>
+        </div>
+      </div>
+      <div class="shower-intro">
+        <div class="shower-text">
+      <p class="shower-lede">A bathroom extension with a raised floor and shower, modelled in 3D before I built it.</p>
+      <ul class="sh-specs">
+        <li>Room <b>1525 × 2415 mm</b></li>
+        <li>Floor <b>335 mm</b> above slab</li>
+        <li>Shower pan <b>990 × 800 mm</b></li>
+        <li>Joists <b>95 mm @ 300 mm</b></li>
+      </ul>
+        </div>
+        <button class="tile shower-photo" data-full="img/IMG_4418.jpg"><img loading="lazy" src="img/t_IMG_4418.jpg" alt="Bathroom under construction with timber joists on posts across a concrete slab, levelled with a spirit level"><div class="cap"><b>On site: the joists going in</b><span>photo</span></div></button>
+      </div>
+
+      <div class="sh-viewer">
+        <div class="sh-stage">
+          <div id="sh-wrap"></div>
+          <span class="sh-chip">Interactive 3D model</span>
+          <div class="sh-zoom">
+            <button class="btn sh-ic" id="sh-zo" type="button" aria-label="Zoom out">−</button>
+            <button class="btn sh-ic" id="sh-zi" type="button" aria-label="Zoom in">+</button>
+          </div>
+          <div class="sh-hint" id="sh-hint" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="44" height="44"><path d="M8 24a16 16 0 0 1 28-10.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M37 6v8h-8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 24a16 16 0 0 1-28 10.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M11 42v-8h8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Drag to rotate</span>
+          </div>
+        </div>
+        <div class="sh-bar">
+          <button class="btn sh-step" id="sh-prev" type="button">← Prev step</button>
+          <div class="sh-now" aria-live="polite">
+            <span class="label" id="sh-cnt"></span>
+            <b id="sh-nm"></b>
+          </div>
+          <button class="btn sh-step" id="sh-next" type="button">Next step →</button>
+          <button class="btn sh-play" id="sh-play" type="button">▶ Play the build</button>
+        </div>
+        <input id="sh-st" type="range" min="0" max="21" step="1" value="21" aria-label="Build step">
+        <div class="sh-ends label" aria-hidden="true"><span>Bare slab</span><span>Finished room</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="art" id="art" aria-labelledby="art-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="art-h">Graphic design &amp; drawings</h2>
+      <span class="label">3 posters · 5 drawings</span>
+    </div>
+    <div class="art-grid">
+      <button class="tile" data-full="img/gd_bridge.jpg"><img loading="lazy" src="img/t_gd_bridge.jpg" alt="Poster: a white arched footbridge over water in high-contrast colour, a smiling man in the corner, and huge cropped dark letters across the top"><div class="cap"><b>Amsterdam, bridge</b><span>poster</span></div></button>
+      <button class="tile" data-full="img/IMG_4139c.jpg"><img loading="lazy" src="img/t_IMG_4139c.jpg" alt="Ink portrait of a man with swept-back hair, half his face in dense crosshatched shadow"><div class="cap"><b>Half in shadow</b><span>ink</span></div></button>
+      <button class="tile" data-full="img/gd_skull.jpg"><img loading="lazy" src="img/t_gd_skull.jpg" alt="Poster in black, red and yellow: a skull surrounded by carved cherub faces, framed by a thin red border with red blackletter shapes along the top"><div class="cap"><b>Skull and cherubs</b><span>poster</span></div></button>
+      <button class="tile" data-full="img/IMG_3576.jpg"><img loading="lazy" src="img/t_IMG_3576.jpg" alt="Pencil portrait of an old man with a long full beard and a heavy brow"><div class="cap"><b>Bearded old man</b><span>graphite</span></div></button>
+      <button class="tile" data-full="img/gd_amst.jpg"><img loading="lazy" src="img/t_gd_amst.jpg" alt="Black and white poster: a laughing face in stark high-contrast black shapes above giant condensed letters reading AMST"><div class="cap"><b>AMST</b><span>poster</span></div></button>
+      <button class="tile" data-full="img/IMG_3030.jpg"><img loading="lazy" src="img/t_IMG_3030.jpg" alt="Pencil study of a muscular archer statue drawing a bow"><div class="cap"><b>Archer, after a statue</b><span>graphite</span></div></button>
+      <button class="tile" data-full="img/IMG_2990_2.jpg"><img loading="lazy" src="img/t_IMG_2990_2.jpg" alt="Pencil drawing of a shirtless man looking up, hands cupped near his face"><div class="cap"><b>Cupped hands</b><span>graphite</span></div></button>
+      <button class="tile" data-full="img/IMG_3288d.jpg"><img loading="lazy" src="img/t_IMG_3288d.jpg" alt="Pencil drawing of a twisting bonsai-like tree"><div class="cap"><b>Twisted tree</b><span>graphite</span></div></button>
+    </div>
+  </div>
+</section>
+
+<section class="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 id="contact-h">Let's talk</h2>
+      <div class="mail">
+        <code id="email">rec.mitch59@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </div>
+    </div>
+    <p>Open to commissions, collaborations and building projects. Get in touch about anything you'd like built, drawn or lit up.</p>
+  </div>
+</section>
+
+<footer><div class="wrap label">© 2026 Mitchell</div></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <img id="lb-img" alt="">
+  <div class="lb-bar">
+    <span id="lb-cap"></span>
+    <div class="lb-nav">
+      <button class="btn" id="lb-prev" type="button">Prev</button>
+      <button class="btn" id="lb-next" type="button">Next</button>
+      <button class="btn" id="lb-close" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(()=>{
+  const tiles=[...document.querySelectorAll('.tile')];
+  const lb=document.getElementById('lb'),img=document.getElementById('lb-img'),cap=document.getElementById('lb-cap');
+  let i=0,last=null;
+  const show=n=>{i=(n+tiles.length)%tiles.length;const t=tiles[i];img.src=t.dataset.full;img.alt=t.querySelector('img').alt;cap.textContent=t.querySelector('.cap b').textContent+' — '+(i+1)+' / '+tiles.length;};
+  tiles.forEach((t,n)=>t.addEventListener('click',()=>{last=t;show(n);lb.hidden=false;document.getElementById('lb-close').focus();}));
+  const close=()=>{lb.hidden=true;last&&last.focus();};
+  document.getElementById('lb-close').onclick=close;
+  document.getElementById('lb-prev').onclick=()=>show(i-1);
+  document.getElementById('lb-next').onclick=()=>show(i+1);
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+
+  document.querySelectorAll('[data-strip]').forEach(b=>b.addEventListener('click',()=>{const st=document.getElementById(b.dataset.strip);st.scrollBy({left:(+b.dataset.dir)*st.clientWidth*0.8,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}));
+  const btn=document.getElementById('copy'),email=document.getElementById('email');
+  btn.addEventListener('click',()=>{
+    const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy email',1800);};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(email);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected';};
+    try{navigator.clipboard.writeText(email.textContent).then(done,fallback);}catch(e){fallback();}
+  });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+if(!window.THREE)return;
+const W=document.getElementById('sh-wrap');
+const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,2));W.appendChild(r.domElement);
+const sc=new THREE.Scene();const cam=new THREE.PerspectiveCamera(35,1,1,2000);
+sc.add(new THREE.AmbientLight(0xffffff,0.62));
+const d1=new THREE.DirectionalLight(0xffffff,0.6);d1.position.set(-120,220,160);sc.add(d1);
+const d2=new THREE.DirectionalLight(0xffffff,0.25);d2.position.set(100,80,-60);sc.add(d2);
+const items=[],steps=[];
+function X(a,b){const g=new THREE.Group();g.userData={a,b,m:[]};sc.add(g);items.push(g);return g}
+function S(n,d){steps.push({n,d});return X(steps.length-1,999)}
+function mat(c,op){const m=new THREE.MeshLambertMaterial({color:c});if(op){m.transparent=true;m.opacity=op;m.depthWrite=false}return m}
+function box(g,w,h,d,x,y,z,c,op){const m=mat(c,op);const me=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);me.position.set(x+w/2,y+h/2,z+d/2);g.add(me);g.userData.m.push(m);const e=new THREE.LineSegments(new THREE.EdgesGeometry(me.geometry),new THREE.LineBasicMaterial({color:0,transparent:true,opacity:0.14}));e.position.copy(me.position);g.add(e)}
+function cyl(g,a,b,rad,c){const A=new THREE.Vector3(...a),B=new THREE.Vector3(...b);const m=mat(c);const me=new THREE.Mesh(new THREE.CylinderGeometry(rad,rad,A.distanceTo(B),20),m);me.position.copy(A).add(B).multiplyScalar(0.5);me.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),B.clone().sub(A).normalize());g.add(me);g.userData.m.push(m)}
+function sph(g,p,rad,c){const m=mat(c);const me=new THREE.Mesh(new THREE.SphereGeometry(rad,18,12),m);me.position.set(...p);g.add(me);g.userData.m.push(m)}
+function pv(g,x,y,z,w,h,d,ax){const L=ax==='x'?w:d;let k=0;for(let o=0;o<L-0.01;o+=9.84){const s=Math.min(9.74,L-o);if(ax==='x')box(g,s,h,d,x+o,y,z,k++%2?0x7d8a93:0x74818a);else box(g,w,h,s,x,y,z+o,k++%2?0x7d8a93:0x74818a)}}
+const T=1.85,TW=0xd9b27c,PT=0xc2b27a,WC=0xe4dfd3,PC=0x9a4a26,GL=0x9fd3e8,TR=0xd3d1c7,SI=0xffffff,OSB=0xd2b37a,CR=0xb4b2a9;
+const JY=8.81,JT=12.55,FF=13.19,CH=108,PB=24.5,PY=26.25;
+const JX=[0,12,24,36,48,58.15],PZ=[0,45.75,91.5],WZ=[0,24,48,72,93.15];
+const PXs=JX.map(x=>Math.min(56.3,Math.max(0,x-0.925)));
+const SEG=[[1.85,12],[13.85,24],[25.85,36],[37.85,48],[49.85,58.15]];
+let g=S('Existing room','Concrete slab, back wall and the fixed 110 mm drain pipe at 455 to 560 mm high. The old wall (see-through) still stands, with the existing bathroom floor at 335 mm behind it.');
+box(g,95,4,113,-30,-4,-5,0xb4b2a9);box(g,99,CH+2,5,-30,0,-5,WC);box(g,30,13,95,-30,0,0,0xcfc8b8);
+cyl(g,[-12,20,4.85],[41.85,20,4.85],2.15,PC);sph(g,[41.85,20,4.85],2.35,PC);cyl(g,[41.85,20,4.85],[41.85,-2,4.85],2.15,PC);
+const ow=X(0,1);box(ow,4,CH,95,-4,0,0,0x9a7a52,0.45);
+S('Remove the old wall','Take out the old partition so the two rooms join, after confirming it is not holding anything up.');
+const mk=S('Mark the finished floor height','Snap a level line at 335 mm on the walls, and a line for the underside of the joists below it.');
+box(mk,62,0.4,0.3,-1,12.8,0,0xe24b4a);box(mk,0.3,0.4,95,59.7,12.8,0,0xe24b4a);
+g=S('Sill seal','A square of sill seal under every post, and a strip along the new wall line, so no wood touches the concrete.');
+PZ.forEach(z=>PXs.forEach(x=>{box(g,3.9,0.1,3.7,x-0.1,0,z-0.1,0x2c2c2a)}));box(g,3.7,0.1,95,59.9,0,0,0x2c2c2a);
+g=S('Posts and shims','18 posts made from two 47 × 100 mm pieces screwed together, about 220 mm tall, one under each joist in three rows. A packer on top levels each joist.');
+PZ.forEach(z=>PXs.forEach(x=>{box(g,T,8.56,3.5,x,0.1,z,PT);box(g,T,8.56,3.5,x+T,0.1,z,0xb8a96f);box(g,3.7,0.15,3.5,x,8.66,z,0x1d9e75)}));
+g=S('Joists','95 mm deep joists on edge at 300 mm centres, toe-screwed into each post. One joist is extended with a 450 mm piece (orange) screwed to its side to reach the back of the alcove.');
+JX.forEach((x,i)=>box(g,T,3.74,i===3?97.64:(x<40?104.9:95),x,JY,0,0xc99a5e));box(g,T,3.74,17.72,37.85,JY,87.18,0xe58f4c);
+g=S('Blocking','Offcuts between the joists above each row of posts so the joists cannot roll, plus a row in the alcove so the board ends have support.');
+[0.8,46.575,92.3].forEach(z=>SEG.forEach(([a,b])=>{const a2=(z===92.3&&a===37.85)?39.7:a;box(g,b-a2,3.74,T,a2,JY,z,TW)}));box(g,T,3.74,10.75,43.0,JY,94.15,0xc99a5e);[[1.85,12],[13.85,24],[25.85,36],[39.7,43.0]].forEach(([a,b])=>box(g,b-a,3.74,T,a,JY,103.05,TW));
+g=S('New wall framing','47 × 100 mm studs at 600 mm centres with a single top plate. The bottom plate is glued to the slab over sill seal.');
+box(g,3.5,T,95,60,0.1,0,PT);WZ.forEach(z=>box(g,3.5,104.2,T,60,1.95,z,TW));box(g,3.5,T,95,60,106.15,0,TW);
+g=S('Wall blocking and battens','Blocking for the bar mixer, riser and grab rail, and 25 × 38 mm battens across the studs in the shower area for the panels to fix to.');
+[63,96].forEach(y=>box(g,3.5,T,22.15,60,y,1.85,0xe2c08f));[33,56].forEach(y=>box(g,3.5,T,22.15,60,y,25.85,0xe2c08f));[27,43,59,75,91,105.5].forEach(y=>box(g,0.75,1.5,31.5,59.25,y,0,PT));
+g=S('Water supply rough-in','Hot and cold 15 mm pipe through the joists, up inside the new wall, out to two wall elbows 150 mm apart for the bar mixer. Pressure-tested.');
+cyl(g,[20,10.5,11],[61.75,10.5,11],0.35,0xe24b4a);cyl(g,[61.75,10.5,11],[61.75,66,11],0.35,0xe24b4a);cyl(g,[61.75,66,11],[58.9,66,11],0.35,0xe24b4a);cyl(g,[20,10.5,17],[61.75,10.5,17],0.35,0x378add);cyl(g,[61.75,10.5,17],[61.75,66,17],0.35,0x378add);cyl(g,[61.75,66,17],[58.9,66,17],0.35,0x378add);
+g=S('Shower platform frame','A 47 × 100 mm frame about 283 mm tall on the joists, built around the drain pipe, which enters through its side.');
+[8.5,19,29.65].forEach(z=>{box(g,39,T,T,20.5,JT,z,TW);[20.5,30,44,57.65].forEach(x=>box(g,T,21.9-JT-T,T,x,JT+T,z,TW));box(g,39,T,T,20.5,21.9,z,TW)});box(g,T,T,19.3,20.5,JT,10.35,TW);box(g,T,T,19.3,20.5,21.9,10.35,TW);box(g,T,T,27.8,57.65,JT,1.85,TW);box(g,T,T,27.8,57.65,21.9,1.85,TW);box(g,39,T,T,20.5,21.9,0,TW);
+g=S('Shower drain by gravity','A saddle fitting on the side of the pipe and a short 40 mm waste run from the trap falling into it. Leak-tested.');
+cyl(g,[35,20,4.85],[37.5,20,4.85],2.6,0x7a3a1c);cyl(g,[36.25,20.3,6.6],[36.25,20.45,7.6],1.1,0x7a3a1c);sph(g,[40,21.3,15.75],1.1,0xeeeeea);cyl(g,[40,21.3,15.75],[36.25,20.45,7.6],0.95,0xeeeeea);cyl(g,[40,21.3,15.75],[40,PB,15.75],0.95,0xeeeeea);
+g=S('Platform top','A sheet of 18 mm OSB across the frame, glued and screwed, with a hole for the drain.');
+box(g,39,0.75,31.5,20.5,23.75,0,OSB);
+g=S('Shower pan','The 990 × 800 mm pan bedded level on the platform, tight to the back wall and new wall, with its drain connected.');
+box(g,39,1.75,31.5,20.5,PB,0,0xf7f6f2);cyl(g,[40,PY,15.75],[40,PY+0.1,15.75],1.8,0x888780);
+g=S('Drywall outside the shower','Moisture-resistant drywall on the rest of the new wall.');
+box(g,0.5,CH-JT,63.5,59.5,JT,31.5,0xf1efe8);
+g=S('PVC panels','Panels on the two shower walls, overlapping down onto the pan, plus the platform front and side.');
+pv(g,58.9,PY,0.35,0.35,CH-PY,31.15,'z');pv(g,20.5,PY,0,38.4,CH-PY,0.35,'x');pv(g,20.15,JT,0,0.35,PB-JT,31.85,'z');pv(g,20.15,JT,31.5,39.35,PB-JT,0.35,'x');
+g=S('Trims','An internal corner trim where the shower walls meet, and edge trims on the platform corner and top edge.');
+box(g,0.35,CH-PY,0.35,58.55,PY,0.35,TR);box(g,0.4,PB-JT,0.4,20.0,JT,31.7,TR);box(g,39.35,0.4,0.4,20.15,24.3,31.7,TR);
+g=S('Silicone','Continuous beads along both pan-to-wall edges as the main seal, and around the pipe where it enters the platform.');
+box(g,0.15,0.15,31.15,58.75,PY,0.35,SI);box(g,38.25,0.15,0.15,20.5,PY,0.35,SI);cyl(g,[20.05,20,4.85],[20.2,20,4.85],2.5,SI);
+g=S('Wood flooring','Tongue-and-groove boards nailed across the joists, with a 12 mm expansion gap at the walls, platform and alcove.');
+mk.userData.b=steps.length-1;
+let k=0;for(let z=0.5;z<32.35;z+=5){box(g,19.65,0.65,Math.min(4.9,32.25-z),0,JT,z,k++%2?0xa87447:0xb07d4f)}
+for(let z=32.35;z+4.9<=95.2;z+=5){box(g,59,0.65,4.9,0,JT,z,k++%2?0xa87447:0xb07d4f)}box(g,14.6,0.65,2.6,44.4,JT,92.35,0xa87447);for(let z=92.35;z<104.4;z+=5){box(g,44.4,0.65,Math.min(4.9,104.4-z),0,JT,z,k++%2?0xa87447:0xb07d4f)}
+g=S('Half step','A step about 165 mm high with a tread cut from a spare floorboard, so the 330 mm climb is split in two.');
+box(g,38.75,5.05,12,20.15,FF,32.35,TW);box(g,38.75,0.65,12.5,20.15,18.15,32.35,0xb07d4f);box(g,38.75,5.05,0.5,20.15,FF,44.35,0xa87447);
+g=S('Bar mixer, riser and grab rail','A thermostatic bar mixer with riser and head on the two wall elbows, and a grab rail by the door for stepping in and out.');
+cyl(g,[58.3,66,8],[58.3,66,20],0.9,CR);cyl(g,[58.3,67,14],[58.3,98,14],0.5,0xd3d1c7);cyl(g,[58.3,98,14],[53.5,98,14],0.4,0xd3d1c7);cyl(g,[53.5,97.6,14],[53.5,98.4,14],3,0xd3d1c7);cyl(g,[57.6,34,27],[57.6,58,27],0.6,CR);cyl(g,[57.6,35,27],[58.9,35,27],0.4,CR);cyl(g,[57.6,57,27],[58.9,57,27],0.4,CR);
+g=S('Glass side panel and door','The glass side panel stands on the pan edge, fixed to the back wall. The sliding door runs across the front to the new wall.');
+box(g,0.3,72,31.15,20.6,PY,0.35,GL,0.3);box(g,38,72,0.3,20.9,PY,31.2,GL,0.3);box(g,0.15,0.15,31.15,20.45,PY,0.35,SI);
+
+const N=steps.length,st=document.getElementById('sh-st');st.max=N-1;
+let cur=N-1,th=2.3,ph=1.05,R=330;
+function draw(){const w=W.clientWidth,h=W.clientHeight||360;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();const t=new THREE.Vector3(24,38,40);cam.position.set(t.x+R*Math.sin(ph)*Math.cos(th),t.y+R*Math.cos(ph),t.z+R*Math.sin(ph)*Math.sin(th));cam.lookAt(t);r.render(sc,cam)}
+function upd(){items.forEach(g=>{const u=g.userData,on=cur>=u.a&&cur<u.b;g.visible=on;u.m.forEach(m=>m.emissive.setHex(on&&u.a===cur&&cur>0?0x3a2a10:0))});st.value=cur;
+document.getElementById('sh-cnt').textContent='Step '+(cur+1)+' of '+N;document.getElementById('sh-nm').textContent=steps[cur].n;draw()}
+const go=n=>{cur=Math.max(0,Math.min(N-1,n));upd()};
+document.getElementById('sh-prev').onclick=()=>go(cur-1);
+document.getElementById('sh-next').onclick=()=>go(cur+1);
+const playBtn=document.getElementById('sh-play');let timer=null;
+const stop=()=>{clearInterval(timer);timer=null;playBtn.textContent='▶ Play the build'};
+playBtn.onclick=()=>{if(timer){stop();return}if(cur>=N-1)go(0);playBtn.textContent='❚❚ Pause';timer=setInterval(()=>{if(cur>=N-1){stop();return}go(cur+1)},1100)};
+['sh-prev','sh-next'].forEach(id=>document.getElementById(id).addEventListener('click',stop));
+st.addEventListener('input',stop);
+const hint=document.getElementById('sh-hint');let touched=false,spin=null;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const settle=()=>{if(touched)return;touched=true;hint.classList.add('gone');cancelAnimationFrame(spin)};
+if(!reduce){let last=performance.now();const loop=t=>{if(touched)return;th+=(t-last)*0.00025;last=t;draw();spin=requestAnimationFrame(loop)};
+new IntersectionObserver(es=>es.forEach(e=>{if(touched)return;cancelAnimationFrame(spin);if(e.isIntersecting){last=performance.now();spin=requestAnimationFrame(loop)}})).observe(W)}
+st.oninput=()=>go(+st.value);
+document.getElementById('sh-zi').onclick=()=>{settle();R=Math.max(90,R/1.15);draw()};
+document.getElementById('sh-zo').onclick=()=>{settle();R=Math.min(560,R*1.15);draw()};
+let dn=null;const c=r.domElement;
+c.addEventListener('pointerdown',e=>{settle();dn={x:e.clientX,y:e.clientY};c.setPointerCapture(e.pointerId)});
+c.addEventListener('pointermove',e=>{if(!dn)return;th+=(e.clientX-dn.x)*0.01;ph=Math.min(1.5,Math.max(0.15,ph-(e.clientY-dn.y)*0.01));dn={x:e.clientX,y:e.clientY};draw()});
+c.addEventListener('pointerup',()=>dn=null);c.addEventListener('pointercancel',()=>dn=null);
+c.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();settle();R=Math.min(560,Math.max(90,R*(e.deltaY>0?1.1:0.9)));draw()},{passive:false});
+new ResizeObserver(draw).observe(W);upd();
+})();
+</script>
+
+</body>
+</html>
